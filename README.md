@@ -8,7 +8,7 @@ https://github.com/ras-marques/ImmersiveGloves/assets/6479742/4af1af61-4261-44ce
 
 手部追踪功能通过在每个手指上安装一个惯性测量单元（IMU）来实现，支持手指的卷曲和展开。当拇指触碰到食指时，摇杆功能会被启用；而通过拇指触碰到中指、无名指和小指，分别可以激活 B、A 和系统按钮。
 
-## Overall repository state
+## 整體儲存庫狀態
 
 代碼不完整。
 主板和IMU板的文件已更新。
@@ -17,14 +17,14 @@ https://github.com/ras-marques/ImmersiveGloves/assets/6479742/4af1af61-4261-44ce
 
 ## 所需设备和技能
 
- - 裸 PCB: https://github.com/ras-marques/ImmersiveGloves/tree/main/CustomPCBs/ReadyToTest
- - 用于填充 PCB 的组件: https://github.com/ras-marques/ImmersiveGloves/blob/main/CustomPCBs/cost_analysis.ods
+ - 裸 PCB https://github.com/ras-marques/ImmersiveGloves/tree/main/CustomPCBs/ReadyToTest
+ - 用于填充 PCB 的组件 https://github.com/ras-marques/ImmersiveGloves/blob/main/CustomPCBs/cost_analysis.ods
  - 焊膏
  - 热风枪或热板
  - 烙铁
  - 热熔胶枪或超级胶水
  - 3D 打印机
- - 预压接 JST 1.0mm 硅胶线套件://www.amazon.es/gp/product/B07PDQKHJ2/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1
+ - 预压接 JST 1.0mm 硅胶线套件 https://www.amazon.es/gp/product/B07PDQKHJ2/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1
 
 在这个项目中，最难的部分是制作电路板。目前我不提供电路板，所以您需要从其他地方订购。
 
@@ -92,7 +92,7 @@ https://github.com/ras-marques/ImmersiveGloves/assets/6479742/4af1af61-4261-44ce
 - 对第二个 RP2040 MCU 重复上述步骤，使用 USB2 和 rp2040Firmware/usb2 中的文件。
 
 ### 驱动程序
-- 我们使用 OpenGloves 驱动程序，以便轻松获取与所有支持 Index 控制器的应用程序的输入，这几乎包括所有应用程序。请从 Steam 下载：https://store.steampowered.com/app/1574050/OpenGloves/
+- 我们使用 OpenGloves 驱动程序，以便轻松获取与所有支持 Index 控制器的应用程序的输入，这几乎包括所有应用程序。请从 Steam 下载：[OpenGloves](https://store.steampowered.com/app/1574050/OpenGloves)
 - 将此仓库中 driverProject/immersive_gloves_controller/build/immersive_gloves_controller 的内容复制到 C:\Program Files (x86)\Steam\steamapps\common\SteamVR\drivers 或任何安裝了 SteamVR 應用程式的地方。
 - 确保在 SteamVR 设置中的启动/关闭选项卡中启用 OpenGloves 和 immersive_gloves_controller 附加组件，点击“管理 SteamVR 附加组件”，这两个组件应当处于开启状态。每当 SteamVR 由于错误关闭时，可能会导致其中一个或两个组件被关闭，因此如果有任何问题，请检查这一点。
 - 您应该在 OpenGloves 配置面板上校准旋转和位置偏移。我是手动进行校准的，因为我暂时还没有手套上的按钮来触发校准界面。未来可能会提供预校准文件及使用说明。
