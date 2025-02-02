@@ -125,4 +125,4 @@ OpenVR 儲存庫有大量文檔，需要一段時間才能找出對該專案重�
 [pr]: https://help.github.com/articles/using-pull-requests/
 
 ### 其他語言
-English |[中文](https://github.com/Cbyernus/ImmersiveGloves/blob/main/README.md)
+[English](https://github.com/ras-marques/ImmersiveGloves) |[中文](https://github.com/Cbyernus/ImmersiveGloves/blob/main/README.md)
