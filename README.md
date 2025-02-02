@@ -116,10 +116,13 @@ OpenVR 儲存庫有大量文檔，需要一段時間才能找出對該專案重�
 1. [Fork this project][fork] 到您的账户
 2. [Create a branch][branch] 用于您打算进行的更改
 3. 对您的 fork 进行更改。
-4. [Send a pull request][pr] 从您 fork 的分支到我们的 `main` 分支。
+4. [Send a pull request][pr] 從您 fork 的分支到我們的 `main` 分支。
 
-使用基于网页的界面进行更改也是可以的，这将自动为您 fork 项目并提示您发送拉取请求。这样可以简化整个流程。
+使用基於網頁的介面進行更改也是可以的，這將自動為您 fork 項目並提示您發送拉取請求。這樣可以簡化整個流程。
 
 [fork]: https://help.github.com/articles/fork-a-repo/
 [branch]: https://help.github.com/articles/creating-and-deleting-branches-within-your-repository
 [pr]: https://help.github.com/articles/using-pull-requests/
+
+### 其他語言
+English |[中文]([https://github.com/danwillm](https://github.com/Cbyernus/ImmersiveGloves/blob/main/README.md))
