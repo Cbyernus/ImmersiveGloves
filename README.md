@@ -72,7 +72,7 @@ https://github.com/ras-marques/ImmersiveGloves/assets/6479742/4af1af61-4261-44ce
 
 ### 準備 Tundra Tracker
 - 从该仓库下载文件。
-- 打开文件夹 {Steam}\steamapps\common\SteamVR\tools\lighthouse\bin\win32（{Steam} 可能是 C:\Program Files (x86)\Steam，但具体情况可能不同）。
+- 打开文件夹 {Steam}\steamapps\common\SteamVR\tools\lighthouse\bin\win32 ({Steam} 可能是 C:\Program Files (x86)\Steam，但具体情况可能不同）。
 - 将此仓库中的 ImmersiveGlovesLeft.json 和 ImmersiveGlovesRight.json 复制到该文件夹中。
 - 从计算机上断开所有 VR 设备，包括接收追踪器数据的接收器。使用 USB 电缆仅连接一个 Tundra Tracker 到计算机。
 - 在地址栏中输入 cmd，以在 {Steam}\steamapps\common\SteamVR\tools\lighthouse\bin\win32 打开命令提示符。
@@ -99,26 +99,26 @@ https://github.com/ras-marques/ImmersiveGloves/assets/6479742/4af1af61-4261-44ce
 
 ## 以下是使这个项目成为可能的重要资源：
  
-Tundra Labs have a repo with some documentation on how to use their development board https://github.com/tundra-labs/rp2040_examples
+Tundra Labs 有一個儲存庫，其中包含一些有關如何使用其開發板的文檔 https://github.com/tundra-labs/rp2040_examples
 
-CircuitPython allowed me to easily get the inertial sensors working without me having to program everything from scratch, you can learn more about this here https://learn.adafruit.com/adafruit-9-dof-orientation-imu-fusion-breakout-bno085/python-circuitpython
+CircuitPython 讓我可以輕鬆地讓慣性感測器工作，而無需從頭開始編寫所有內容，您可以在此處了解更多信息 https://learn.adafruit.com/adafruit-9-dof-orientation-imu-fusion-breakout-bno085/python-circuitpython
 
-Finally Functional's Open VR Driver Tutorial that was a great introduction on how OpenVR inputs work https://www.youtube.com/watch?v=LzEIOBnbC8k
+最後，Functional 的 Open VR 驅動程式教學很好地介紹了 OpenVR 輸入的工作原理 https://www.youtube.com/watch?v=LzEIOBnbC8k
 
-OpenVR repository has lots of documentation, it takes a while to figure out the parts that are important for this project, but it's worth the effort https://github.com/ValveSoftware/openvr
+OpenVR 儲存庫有大量文檔，需要一段時間才能找出對該專案重要的部分，但這是值得的 https://github.com/ValveSoftware/openvr
 
-[danwillm](https://github.com/danwillm) helped me get this thing started by pointing me in the right direction, telling me what technologies to use to speak with the tracker and openvr.
+[danwillm](https://github.com/danwillm) 透過為我指明正確的方向，告訴我使用哪些技術來與追蹤器和 openvr 對話，幫助我開始了這件事。
 
-## Contributing workflow
+## 貢獻工作流程
 
-Here’s how I suggest you go about proposing a change to this project:
+以下是我建议您如何向该项目提议更改的步骤：
 
-1. [Fork this project][fork] to your account.
-2. [Create a branch][branch] for the change you intend to make.
-3. Make your changes to your fork.
-4. [Send a pull request][pr] from your fork’s branch to our `main` branch.
+1. [Fork this project][fork] 到您的账户
+2. [Create a branch][branch] 用于您打算进行的更改
+3. 对您的 fork 进行更改。
+4. [Send a pull request][pr] 从您 fork 的分支到我们的 `main` 分支。
 
-Using the web-based interface to make changes is fine too, and will help you by automatically forking the project and prompting to send a pull request too.
+使用基于网页的界面进行更改也是可以的，这将自动为您 fork 项目并提示您发送拉取请求。这样可以简化整个流程。
 
 [fork]: https://help.github.com/articles/fork-a-repo/
 [branch]: https://help.github.com/articles/creating-and-deleting-branches-within-your-repository
