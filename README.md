@@ -1,102 +1,103 @@
 # ImmersiveGloves
 
-I want to share how I am making vr gloves using 2 Tundra Trackers, 2 interface boards and 12 inertial sensors.
+我想分享如何使用两个Tundra Tracker、两个接口板和12个惯性传感器制作VR手套。
 
 https://github.com/ras-marques/ImmersiveGloves/assets/6479742/4af1af61-4261-44ce-aa3d-e45de0df7709
 
-Check the full presentation on youtube https://www.youtube.com/watch?v=5OSYiYDkOE8
+请查看 YouTube 上的完整演示: https://www.youtube.com/watch?v=5OSYiYDkOE8
 
-Hand tracking works with curl and splay on all fingers with 1 IMU on each finger. There is a joystick that is enabled by touching the thumb to the index finger and B, A and System buttons are available by touching the thumb to the middle, ring and pinky fingers respectively.
+手部追踪功能通过在每个手指上安装一个惯性测量单元（IMU）来实现，支持手指的卷曲和展开。当拇指触碰到食指时，摇杆功能会被启用；而通过拇指触碰到中指、无名指和小指，分别可以激活 B、A 和系统按钮。
 
 ## Overall repository state
 
-Instructions are incomplete.
-The files for the main board and IMU boards are updated.
-There is only code for the right glove.
-3D printing files need tweaking.
+代碼不完整。
+主板和IMU板的文件已更新。
+目前只有右手手套的代码。
+3D打印文件需要进行调整。
 
-## Necessary equipment and skills
+## 所需设备和技能
 
- - Bare PCBs: https://github.com/ras-marques/ImmersiveGloves/tree/main/CustomPCBs/ReadyToTest
- - Components for populating the PCBs: https://github.com/ras-marques/ImmersiveGloves/blob/main/CustomPCBs/cost_analysis.ods
- - Solder paste
- - Hot air gun or hot plate
- - Soldering iron
- - Hot glue gun or super glue
- - 3d printer
- - Pre-crimped JST 1.0mm silicon wire kit: https://www.amazon.es/gp/product/B07PDQKHJ2/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1
+ - 裸 PCB: https://github.com/ras-marques/ImmersiveGloves/tree/main/CustomPCBs/ReadyToTest
+ - 用于填充 PCB 的组件: https://github.com/ras-marques/ImmersiveGloves/blob/main/CustomPCBs/cost_analysis.ods
+ - 焊膏
+ - 热风枪或热板
+ - 烙铁
+ - 热熔胶枪或超级胶水
+ - 3D 打印机
+ - 预压接 JST 1.0mm 硅胶线套件://www.amazon.es/gp/product/B07PDQKHJ2/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1
 
-The hardest part in this project is making the boards. I am currently not supplying boards, so you will need to order them from somewhere.
+在这个项目中，最难的部分是制作电路板。目前我不提供电路板，所以您需要从其他地方订购。
 
-The boards are 4 layer and have fine pitch components. Making the PCBs at home is out of the question, but you can order them from JLCPCB, PCBWAY, etc.
+这些电路板是四层的，具有细间距组件。在家制作 PCB 是不切实际的，但您可以从 JLCPCB、PCBWAY 等地方订购。
 
-I assembled the components on my glove by hand using a stencil to dispense solder paste and used a hot air gun for reflowing. A hot plate is better.
+我使用模板手工组装了手套上的组件，使用焊膏和热风枪进行回流焊。使用热板效果更佳。
 
-If you don't have a 3d printer, you could order the models from somewhere or ask a friend.
+如果您没有 3D 打印机，可以从其他地方订购模型或请朋友帮忙。
 
-Currently everything is glued to the glove fabric, you could use hot glue or super glue.
+目前所有组件都粘在手套布料上，您可以使用热熔胶或超级胶水。
 
-The pre-crimped JST wires are necessary to make the assembly process easier, more below.
+预压接的 JST 线是使组装过程更容易的必要材料。
 
-## Cost analysis
+## 成本分析
 
-A realistic ballpark for cost is around 250€ per pair of gloves with component and shipping cost and assuming you already have all the tools like a 3d printer, and soldering tools.
+根据组件和运输成本，假设您已经拥有所有工具（如 3D 打印机和焊接工具），每双手套的实际成本大约在 250€ 左右。
 
-You can refer to https://github.com/ras-marques/ImmersiveGloves/blob/main/CustomPCBs/cost_analysis.ods for the complete BOM, but in summary the current cost is described below:
-- 4€/pair times 50 = 200€: Cost to make enough boards for exactly 50 pairs of these gloves
-- 170€/pair: Cost to source enough components and some spares for a pair of these gloves
-- 130€/pair times 50 = 6500€: Cost to source enough compoents for 50 pairs of these gloves
+完整的BOM可以參考https://github.com/ras-marques/ImmersiveGloves/blob/main/CustomPCBs/cost_analysis.ods，但總結一下目前的成本如下：
+- 200€：制造足够的电路板以供 50 双手套，成本为 4€/双。
+- 170€：为一双手套采购足够的组件和一些备用件的成本。
+- 6500€：为 50 双手套采购足够的组件的成本，计算为 130€/双，乘以 50
 
-## Tracking method
+## 追蹤方式
 
-Why base these gloves around the Tundra Tracker? Using a Tundra Tracker and an expansion board avoids having to deal with batteries, since the Tundra Tracker can power everything. Also, the tracker takes care of transmiting the data from the gloves to the computer wirelessly. Two RP2040's take care of acquiring the data from the 6 inertial sensors, processing it and delivering it to the tracker.
+使用 Tundra Tracker 为这些手套提供基础的原因是，使用 Tundra Tracker 和扩展板可以避免处理电池问题，因为 Tundra Tracker 可以为所有设备供电。此外，追踪器还负责将手套的数据无线传输到计算机。两个 RP2040 负责从六个惯性传感器获取数据、处理数据并将其传递给追踪器。
 
-This project is for people that already have a laser tracked VR setup with base stations and ideally for people using Tundra Trackers for full body tracking. That said, if you don't have the Tundra Trackers yet, there are some options:
-- 400€: 2 bundles of individual tundra tracker and SW1 dongle (2 USB ports needed) https://unboundxr.eu/tundra-tracker?sqr=tundra + https://unboundxr.eu/tundra-sw1-dongle
-- 459€: 3 Tundra Tracker bundle (1 USB port needed) https://unboundxr.eu/tundra-x3-bundle
-- 609€: 4 Tundra Tracker bundle (1 USB port needed) https://unboundxr.eu/tundra-x4-bundel
+该项目面向已经拥有激光追踪 VR 设置并使用基站的用户，理想情况下是使用 Tundra Trackers 进行全身追踪的用户。不过，如果您还没有 Tundra Trackers，有以下一些选项：
 
-On top of this, if you don't have base stations, those go for 159€ from valve and it is better to have 2.
+- 400€：2 套独立 Tundra Tracker 和 SW1 dongle（需要 2 个 USB 端口） Tundra Tracker + Tundra SW1 Dongle
+- 459€：3 套 Tundra Tracker 套装（需要 1 个 USB 端口） Tundra Tracker x3 Bundle
+- 609€：4 套 Tundra Tracker 套装（需要 1 个 USB 端口） Tundra Tracker x4 Bundle
+此外，如果您没有基站，Valve 的基站售价为 159€，最好是购买 2 个。
 
-## End goal for these gloves
+## 這個手套的最終目標
 
-- The Tundra Tracker is amazing, it's the smaller tracker available and it even supports sending sensor data to the computer. This is the ultimate tracker for these gloves, but I want to make these more accessible for everyone, so I will want to support more tracking methods, begining with using your available controllers just like LucidVR does. This will probably imply a redesign of the main board to make it possible to power it using an external battery.
-- I started this project with the Slime VR BNO085 boards and have since designed a custom BNO085 that is as small as I could make it. I didn't even include a JST connector and wires are soldered directly to it. To make it easier to assemble though, I am considering including the connector in my next IMU boards. I also want to explore using a cheaper IMU chip like the BMI270 with and without a magnetometer.
-- My gloves have finger mobility and a low profile as top priorities, so I have no plans for implementing physical buttons unless absolutelly necessary nor force feedback, but vibration haptics are possible if small enough. I do encourage you to do so and share your own version of these gloves!
+- Tundra Tracker 非常出色，它是可用的最小追踪器，还支持将传感器数据发送到计算机。这是这些手套的终极追踪器，但我希望让这些设备对每个人都更加可及，因此我想支持更多的追踪方法，从使用您现有的控制器开始，就像 LucidVR 一样。这可能意味着需要重新设计主板，以便能够使用外部电池供电。
+- 我最初是从 Slime VR 的 BNO085 板开始这个项目的，之后设计了一个尽可能小的定制 BNO085。我甚至没有包含 JST 连接器，电线直接焊接到板上。不过，为了便于组装，我考虑在下一个 IMU 板中包含连接器。我还想探索使用更便宜的 IMU 芯片，如 BMI270，带或不带磁力计。
+- 我的手套将手指灵活性和低调设计作为首要考虑，因此除非绝对必要，否则我没有计划实现物理按钮或力反馈，但如果足够小，振动触觉是可能的。我鼓励您这样做，并分享您自己的手套版本！
 
-## Steps to make the gloves:
+## 手套製作步驟：
 
-### 3D Print the mount points for the tracker
-- There are 3D printing files available in the 3DPrintingFiles folder of this repo. This is not a one size fits all kind of mount point. I measured the curvature of the back of my hand with a 3D printed matrix of screw inserts, so it fits me perfectly. I will show my process in the future so you can do the same if you want.
+### 3D 列印追蹤器的安裝點
 
-### Prepare the Tundra Tracker
-- Download the files from this repository.
-- Open folder {Steam}\steamapps\common\SteamVR\tools\lighthouse\bin\win32 ({Steam} is probably C:\Program Files (x86)\Steam on your system, but who knows).
-- Copy "ImmersiveGlovesLeft.json" and "ImmersiveGlovesRight.json" from this repository into this folder.
-- Disconnect every vr device you have from your computer, including the dongles that receive data from the trackers. Using a USB cable, connect just one Tundra Tracker to your computer.
-- Write "cmd" on the address bar to open a Command Line inside {Steam}\steamapps\common\SteamVR\tools\lighthouse\bin\win32.
-- Write "lighthouse_console.exe" on the Command Line and press return.
-- You should see only one device connected, if there are more, make sure to disconnect them, this is **important**. Write "downloadconfig backup.json" to store a backup of the Tundra Tracker config file that is stored inside the tracker.
-- Store the config of "ImmersiveGlovesRight.json" to the tracker with "uploadconfig ImmersiveGlovesRight.json" from the command line. This will be the tracker for your right glove.
-- Disconnect the tracker and connect another one.
-- Store the config of "ImmersiveGlovesLeft.json" to the tracker with "uploadconfig ImmersiveGlovesLeft.json" from the command line. This will be the tracker for your left glove.
-- Finally install the ImmersiveGloves driver by copying the folder driverProject/immersive_gloves_controller/build/immersive_gloves_controller on the repository to {Steam}\steamapps\common\SteamVR\drivers\
+- 该仓库的 3DPrintingFiles 文件夹中提供了 3D 打印文件。这不是一个通用的安装点。我使用 3D 打印的螺丝插入矩阵测量了我手背的曲率，因此它完美贴合。未来我会展示我的过程，以便您可以在需要时进行相同的操作。
 
-### Flash the RP2040 board (files not yet available!)
-- Download the latest stable version of circuitpython version from here https://circuitpython.org/board/raspberry_pi_pico/
-- Connect your expansion board to the Tundra Tracker and then to your PC using the included USB board connected to USB1.
-- With the Tracker OFF, press the button on the USB board and while it is pressed, power up the Tundra Tracker, this will let you put the RP2040 in the expansion board in bootloader mode.
-- A window should appear on your PC showing the new drive that is emulated by the RP2040. Copy the circuitpython file you downloaded earlier into this folder. The RP2040 will reboot automatically.
-- Like before, a new window should appear on your PC showing another drive but now with a different structure. This is where you will put your program that processes the sensor data and sends it to the computer. Just copy the contents of the rp2040Firmware/usb1 folder into the root of this new folder that appeared.
-- Repeat the steps above for the second RP2040 mcu by using USB2 and the files in rp2040Firmware/usb2
+### 準備 Tundra Tracker
+- 从该仓库下载文件。
+- 打开文件夹 {Steam}\steamapps\common\SteamVR\tools\lighthouse\bin\win32（{Steam} 可能是 C:\Program Files (x86)\Steam，但具体情况可能不同）。
+- 将此仓库中的 ImmersiveGlovesLeft.json 和 ImmersiveGlovesRight.json 复制到该文件夹中。
+- 从计算机上断开所有 VR 设备，包括接收追踪器数据的接收器。使用 USB 电缆仅连接一个 Tundra Tracker 到计算机。
+- 在地址栏中输入 cmd，以在 {Steam}\steamapps\common\SteamVR\tools\lighthouse\bin\win32 打开命令提示符。
+- 在命令提示符中输入 lighthouse_console.exe 并按回车。
+- 您应该只看到一个设备连接，如果有更多设备，请确保断开它们，这一点 很重要。输入 downloadconfig backup.json 以存储 Tundra Tracker 配置文件的备份。
+- 使用命令行中的 uploadconfig ImmersiveGlovesRight.json 将 ImmersiveGlovesRight.json 配置存储到追踪器中。这将是您右手手套的追踪器。
+- 断开该追踪器并连接另一个追踪器。
+- 使用命令行中的 uploadconfig ImmersiveGlovesLeft.json 将 ImmersiveGlovesLeft.json 配置存储到追踪器中。这将是您左手手套的追踪器。
+- 最后，通过将仓库中的 driverProject/immersive_gloves_controller/build/immersive_gloves_controller 文件夹复制到 {Steam}\steamapps\common\SteamVR\drivers\ 来安装 ImmersiveGloves 驱动程序。
 
-### Drivers
-- We are using the OpenGloves driver so we can easily get inputs working with all apps that support the Index Controllers, which are most of them. So download it from steam: https://store.steampowered.com/app/1574050/OpenGloves/
-- Copy the contents of driverProject/immersive_gloves_controller/build/immersive_gloves_controller in this repo to C:\Program Files (x86)\Steam\steamapps\common\SteamVR\drivers or wherever you have your SteamVR app installed.
-- Be sure to enable both opengloves and immersive_gloves_controller addon by going to SteamVR settings, Startup/Shutdown tab and clicking Manage SteamVR Add-Ons. These two should be toggled on. Everytime SteamVR shuts down due to an error, it is likely one or both will be toggled off, so check this if something is not working.
-- You should calibrate the rotation and position offsets on the OpenGloves configuration panel. I did that manually since I don't have buttons on the glove yet to trigger the callibration interface. Pre-calibrated files may be available in the future with instructions on how to use them.
+### 刷RP2040 板 (文件尚未可用!)
+- 从这里下载最新的稳定版本的 CircuitPython：CircuitPython 下载。
+- 将扩展板连接到 Tundra Tracker，然后使用配套的 USB 板通过 USB1 连接到 PC。
+- 在 Tracker 关闭的状态下，按下 USB 板上的按钮，同时启动 Tundra Tracker，这样可以将 RP2040 设置为扩展板的引导加载程序模式。
+- 在您的 PC 上应该会出现一个窗口，显示 RP2040 模拟的新驱动器。将您之前下载的 CircuitPython 文件复制到此文件夹中。RP2040 会自动重启。
+- 像之前一样，您的 PC 上应该会出现另一个窗口，显示另一个驱动器，但结构不同。这是您放置处理传感器数据并将其发送到计算机的程序的地方。只需将 rp2040Firmware/usb1 文件夹中的内容复制到此新文件夹的根目录。
+- 对第二个 RP2040 MCU 重复上述步骤，使用 USB2 和 rp2040Firmware/usb2 中的文件。
 
-## Important resources that made this project possible
+### 驱动程序
+- 我们使用 OpenGloves 驱动程序，以便轻松获取与所有支持 Index 控制器的应用程序的输入，这几乎包括所有应用程序。请从 Steam 下载：https://store.steampowered.com/app/1574050/OpenGloves/
+- 将此仓库中 driverProject/immersive_gloves_controller/build/immersive_gloves_controller 的内容复制到 C:\Program Files (x86)\Steam\steamapps\common\SteamVR\drivers 或任何安裝了 SteamVR 應用程式的地方。
+- 确保在 SteamVR 设置中的启动/关闭选项卡中启用 OpenGloves 和 immersive_gloves_controller 附加组件，点击“管理 SteamVR 附加组件”，这两个组件应当处于开启状态。每当 SteamVR 由于错误关闭时，可能会导致其中一个或两个组件被关闭，因此如果有任何问题，请检查这一点。
+- 您应该在 OpenGloves 配置面板上校准旋转和位置偏移。我是手动进行校准的，因为我暂时还没有手套上的按钮来触发校准界面。未来可能会提供预校准文件及使用说明。
+
+## 以下是使这个项目成为可能的重要资源：
  
 Tundra Labs have a repo with some documentation on how to use their development board https://github.com/tundra-labs/rp2040_examples
 
