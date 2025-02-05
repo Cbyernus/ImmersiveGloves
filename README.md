@@ -101,7 +101,7 @@ https://github.com/ras-marques/ImmersiveGloves/assets/6479742/4af1af61-4261-44ce
  
 Tundra Labs 有一個儲存庫，其中包含一些有關如何使用其開發板的文檔 https://github.com/tundra-labs/rp2040_examples
 
-CircuitPython 讓我可以輕鬆地讓慣性感測器工作，而無需從頭開始編寫所有內容，您可以在此處了解更多信息 https://learn.adafruit.com/adafruit-9-dof-orientation-imu-fusion-breakout-bno085/python-circuitpython
+CircuitPython 讓我可以輕鬆地讓imu工作，而無需從頭開始編寫所有內容，您可以在此處了解更多信息 https://learn.adafruit.com/adafruit-9-dof-orientation-imu-fusion-breakout-bno085/python-circuitpython
 
 最後，Functional 的 Open VR 驅動程式教學很好地介紹了 OpenVR 輸入的工作原理 https://www.youtube.com/watch?v=LzEIOBnbC8k
 
