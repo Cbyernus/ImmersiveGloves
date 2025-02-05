@@ -42,7 +42,7 @@ https://github.com/ras-marques/ImmersiveGloves/assets/6479742/4af1af61-4261-44ce
 
 根据组件和运输成本，假设您已经拥有所有工具（如 3D 打印机和焊接工具），每双手套的实际成本大约在 250€ 左右。
 
-完整的BOM可以參考https://github.com/ras-marques/ImmersiveGloves/blob/main/CustomPCBs/cost_analysis.ods，但總結一下目前的成本如下：
+完整的BOM可以參考https://github.com/ras-marques/ImmersiveGloves/blob/main/CustomPCBs/cost_analysis.ods ，但總結一下目前的成本如下：
 - 200€：制造足够的电路板以供 50 双手套，成本为 4€/双。
 - 170€：为一双手套采购足够的组件和一些备用件的成本。
 - 6500€：为 50 双手套采购足够的组件的成本，计算为 130€/双，乘以 50
